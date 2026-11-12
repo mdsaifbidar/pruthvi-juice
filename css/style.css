@@ -400,7 +400,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ---------- Gallery ---------- */
 .gallery-grid { columns: 3; column-gap: clamp(12px, 1.4vw, 20px); }
-.g-item { break-inside: avoid; margin-bottom: clamp(12px, 1.4vw, 20px); border-radius: var(--radius); overflow: hidden; position: relative; cursor: zoom-in; }
+.g-item { break-inside: avoid; margin: 0 0 clamp(12px, 1.4vw, 20px); border-radius: var(--radius); overflow: hidden; position: relative; cursor: zoom-in; }
 .g-item img { width: 100%; height: auto; transition: transform 1.2s var(--ease); }
 .g-item:hover img { transform: scale(1.06); }
 .g-item figcaption { position: absolute; left: 16px; bottom: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; background: rgba(11,9,7,.55); backdrop-filter: blur(8px); opacity: 0; transform: translateY(8px); transition: .4s var(--ease); }
@@ -529,15 +529,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .story__visual { max-width: 520px; width: 100%; margin: 0 auto; }
   .story__badge { left: 8px; width: 112px; height: 112px; }
 
-  /* horizontal section becomes native swipe */
-  .signatures { overflow: visible; }
-  .h-wrap { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .h-wrap::-webkit-scrollbar { display: none; }
-  .h-track { padding-bottom: 96px; }
-  .sig-card, .sig-intro, .sig-end { scroll-snap-align: start; scroll-margin-left: var(--gutter); }
-  .sig-card { width: 78vw; }
-  .sig-intro { width: 78vw; padding: 0; gap: 24px; justify-content: flex-start; }
-  .sig-end { width: 70vw; }
+  /* horizontal section becomes a plain card grid: every drink visible, no hidden swipe */
+  .h-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: auto; gap: 14px; padding-bottom: 96px; }
+  .sig-intro, .sig-end { grid-column: 1 / -1; width: auto; padding: 0; }
+  .sig-intro { gap: 16px; justify-content: flex-start; margin-bottom: 12px; }
+  .sig-end { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; margin-top: 20px; }
+  .sig-card { width: auto; }
+  .sig-card__idx { top: 12px; left: 12px; padding: 4px 9px; font-size: 10px; }
+  .sig-card__body { padding: 14px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .sig-card__cat { font-size: 9.5px; letter-spacing: .14em; }
+  .sig-card__name { font-size: 22px; margin-top: 4px; }
+  .sig-card__price { font-size: 22px; color: var(--accent); }
+  .sig-end h3 { font-size: 34px; }
 
   .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
   .t-1 { grid-column: span 2; grid-row: span 2; }
@@ -566,6 +569,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .t-1, .t-2, .t-3, .t-4, .t-5, .t-6, .t-7, .t-8 { grid-column: span 1; grid-row: span 1; }
   .t-1 { grid-row: span 1; }
   .gallery-grid { columns: 2; }
+  .h-track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .footer__cols { grid-template-columns: 1fr; }
   .lightbox__nav { top: auto; bottom: 24px; transform: none; }
   .brand__name { font-size: 19px; }
