@@ -5,7 +5,7 @@
   // sig: house signature (also featured on the home page)
   const MENU = [
     {
-      id: "house-specials", title: "House Specials", img: img("1473115209096-e0375dd6b3b3"), tag: "Special",
+      id: "house-specials", title: "House Specials", img: "img/coconut-shake-wide.jpg", tag: "Special",
       desc: "Three milkshakes you'll only find here. Thick, fresh and blended to order.",
       items: [["Red Banana Milkshake", 80], ["Avocado Milkshake", 140, "Butter fruit"], ["Coconut Milkshake", 150]],
     },
