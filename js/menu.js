@@ -1,11 +1,13 @@
 /* Menu page: data (transcribed from the café's printed menu), rendering, scroll-spy tabs, live search */
 (function () {
-  const img = (id, w = 1100) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+  const img = (id, w = 1100) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
+  // responsive widths for Unsplash images; local files are already sized
+  const srcset = (u) => (u.includes("images.unsplash.com") ? [480, 720, 960, 1100].map((w) => `${u.replace(/w=\d+/, `w=${w}`)} ${w}w`).join(", ") : "");
 
   // sig: house signature (also featured on the home page)
   const MENU = [
     {
-      id: "house-specials", title: "House Specials", img: "img/coconut-shake-wide.jpg", tag: "Special",
+      id: "house-specials", title: "House Specials", img: "img/coconut-shake-wide.webp", tag: "Special",
       desc: "Three milkshakes you'll only find here. Thick, fresh and blended to order.",
       items: [["Red Banana Milkshake", 80], ["Avocado Milkshake", 140, "Butter fruit"], ["Coconut Milkshake", 150]],
     },
@@ -87,7 +89,7 @@
       <div class="container m-cat__grid">
         <div class="m-cat__aside">
           <div class="m-cat__img img-reveal">
-            <img src="${c.img}" alt="${esc(c.title)}" loading="${ci < 2 ? "eager" : "lazy"}" data-parallax="6" />
+            <img src="${c.img}"${srcset(c.img) ? ` srcset="${srcset(c.img)}" sizes="(max-width: 900px) 100vw, 46vw"` : ""} alt="${esc(c.title)}" loading="${ci < 2 ? "eager" : "lazy"}" data-parallax="6" />
             ${c.tag ? `<span class="m-cat__tag">${c.tag}</span>` : ""}
           </div>
         </div>
