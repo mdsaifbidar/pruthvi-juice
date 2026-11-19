@@ -9,7 +9,7 @@
     {
       id: "house-specials", title: "House Specials", img: "img/coconut-shake-wide.webp", tag: "Special",
       desc: "Three milkshakes you'll only find here. Thick, fresh and blended to order.",
-      items: [["Red Banana Milkshake", 80], ["Avocado Milkshake", 140, "Butter fruit"], ["Coconut Milkshake", 150]],
+      items: [["Red Banana Milkshake", 120], ["Avocado Milkshake", 140, "Butter fruit"], ["Coconut Milkshake", 150]],
     },
     {
       id: "fresh-fruit-juice", title: "Fresh Fruit Juice", img: img("1613478223719-2ab802602423"),
